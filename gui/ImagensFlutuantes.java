@@ -78,21 +78,6 @@ public class ImagensFlutuantes {
             // Garante que o layout seja null para posicionamento absoluto
             currentWindow.getContentPane().setLayout(null);
             
-            // Adiciona o botão do painel de comunicação primeiro
-            painelComunicacaoBtn = new JButton("Abrir Painel de Comunicação");
-            painelComunicacaoBtn.setBounds(250, 300, 250, 40);
-            painelComunicacaoBtn.setFont(new Font("Arial", Font.BOLD, 14));
-            painelComunicacaoBtn.setBackground(new Color(0, 123, 255));
-            painelComunicacaoBtn.setForeground(Color.WHITE);
-            painelComunicacaoBtn.setFocusPainted(false);
-            painelComunicacaoBtn.setBorder(BorderFactory.createRaisedBevelBorder());
-            painelComunicacaoBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            painelComunicacaoBtn.addActionListener(e -> {
-                abrirNovaJanela("imagens/painel_botoes.jpg");
-            });
-            currentWindow.getContentPane().add(painelComunicacaoBtn);
-            painelComunicacaoBtn.setVisible(true);
-
             // Adiciona o adesivo
             ImageIcon adesivoIcon = new ImageIcon("imagens/22 - Adesivo de porta isolada - 2 terços instalado.jpg");
             adesivoLabel = new JLabel(adesivoIcon);

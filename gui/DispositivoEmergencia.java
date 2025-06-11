@@ -21,7 +21,7 @@ public class DispositivoEmergencia extends JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
-                ImagensFlutuantes.mostrarImagens();
+                // ImagensFlutuantes.mostrarImagens(); // Removido para não mostrar imagens flutuantes automaticamente
             }
 
             @Override

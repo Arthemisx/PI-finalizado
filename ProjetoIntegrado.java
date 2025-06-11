@@ -14,6 +14,7 @@ public class ProjetoIntegrado extends JFrame {
     public static Cursor customCursor;
 
     public static void main(String[] args) {
+        System.out.println("Iniciando ProjetoIntegrado...");
         SwingUtilities.invokeLater(() -> {
             try {
                 // Por enquanto, vamos usar o cursor padrão já que não encontrei o ícone da mão
@@ -40,7 +41,7 @@ public class ProjetoIntegrado extends JFrame {
     }
 
     private void initComponents() {
-        Image backgroundImage = UIUtils.loadImage("imagens/tela de entrada.png");
+        Image backgroundImage = UIUtils.loadImage("imagens/imagem de entradaatt.jpg");
         BackgroundPanel panel = new BackgroundPanel(backgroundImage);
         panel.setLayout(null);
 
@@ -78,7 +79,7 @@ class TelaLogin extends JFrame {
     }
 
     private void initComponents() {
-        Image backgroundImage = UIUtils.loadImage("imagens/tela de cadastro.png");
+        Image backgroundImage = UIUtils.loadImage("imagens/imagem cadastro.jpg");
         BackgroundPanel mainPanel = new BackgroundPanel(backgroundImage);
         mainPanel.setLayout(null);
 
@@ -92,21 +93,21 @@ class TelaLogin extends JFrame {
 
     private void adicionarCampoNomeUsuario(JPanel panel) {
         nomeUsuarioField = new JTextField();
-        nomeUsuarioField.setBounds(400, 250, 500, 40);
+        nomeUsuarioField.setBounds(550, 250, 500, 40);
         estilizarCampoInvisivel(nomeUsuarioField, "Digite seu nome");
         panel.add(nomeUsuarioField);
     }
 
     private void adicionarCampoEmailAdministrador(JPanel panel) {
         nomeAdministradorField = new JTextField();
-        nomeAdministradorField.setBounds(400, 350, 500, 40);
+        nomeAdministradorField.setBounds(550, 350, 500, 40);
         estilizarCampoInvisivel(nomeAdministradorField, "Digite seu e-mail");
         panel.add(nomeAdministradorField);
     }
 
     private void adicionarCampoSenha(JPanel panel) {
         passwordField = new JPasswordField();
-        passwordField.setBounds(400, 450, 500, 40);
+        passwordField.setBounds(550, 450, 500, 40);
         estilizarCampoInvisivel(passwordField, "Digite sua senha");
         passwordField.setEchoChar((char)0);
         panel.add(passwordField);
@@ -116,18 +117,20 @@ class TelaLogin extends JFrame {
         campo.setOpaque(false);
         campo.setBackground(new Color(0, 0, 0, 0));
         campo.setBorder(null);
-        campo.setForeground(new Color(0, 0, 0, 0));
-        campo.setCaretColor(new Color(0, 0, 0, 0));
+        campo.setForeground(Color.BLACK);
+        campo.setCaretColor(Color.BLACK);
         campo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        campo.setFont(new Font("Arial", Font.PLAIN, 22));
         
-        // Adicionar placeholder invisível
         campo.setText(placeholder);
+        campo.setFont(new Font("Arial", Font.ITALIC, 22));
         
         campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {
                 if (campo.getText().equals(placeholder)) {
                     campo.setText("");
+                    campo.setFont(new Font("Arial", Font.PLAIN, 22));
                     if (campo instanceof JPasswordField) {
                         ((JPasswordField)campo).setEchoChar((char)0);
                     }
@@ -137,6 +140,7 @@ class TelaLogin extends JFrame {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 if (campo.getText().isEmpty()) {
                     campo.setText(placeholder);
+                    campo.setFont(new Font("Arial", Font.ITALIC, 22));
                     if (campo instanceof JPasswordField) {
                         ((JPasswordField)campo).setEchoChar((char)0);
                     }
@@ -147,11 +151,13 @@ class TelaLogin extends JFrame {
 
     private void adicionarBotaoEntrar(JPanel panel) {
         JButton entrarButton = new JButton();
-        entrarButton.setBounds(500, 550, 300, 50);
+        entrarButton.setBounds(640, 520, 500, 70);
         entrarButton.setOpaque(false);
         entrarButton.setContentAreaFilled(false);
         entrarButton.setBorderPainted(false);
+        entrarButton.setForeground(new Color(0,0,0,0));
         entrarButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        entrarButton.setFont(new Font("Arial", Font.BOLD, 20));
 
         entrarButton.addActionListener(e -> {
             String nomeUsuario = nomeUsuarioField.getText();
@@ -199,7 +205,7 @@ class TelaDeOpcoes extends JFrame {
         panel.setLayout(null);
 
         JLabel textoInfo = new JLabel("<html><center>Aqui é seu menu principal, você pode ver seu <br> progresso geral ou começar o jogo!</center></html>");
-        textoInfo.setBounds(450, 255, 595, 60);
+        textoInfo.setBounds(600, 255, 595, 60);
         textoInfo.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
         textoInfo.setForeground(Color.BLACK);
         panel.add(textoInfo);
@@ -245,10 +251,15 @@ class TelaDeRegras extends JFrame {
         BackgroundPanel panel = new BackgroundPanel(backgroundImage);
         panel.setLayout(null);
 
-        JButton btnIniciar = UIUtils.createInvisibleButton(
-            new Rectangle(670, 550, 470, 62),
-            evt -> abrirPainelInterativo()
-        );
+        JButton btnIniciar = new JButton("Iniciar");
+        btnIniciar.setBounds(940, 550, 570, 62);
+        btnIniciar.setOpaque(false);
+        btnIniciar.setContentAreaFilled(false);
+        btnIniciar.setBorderPainted(false);
+        btnIniciar.setForeground(new Color(0,0,0,0));
+        btnIniciar.setFont(new Font("Arial", Font.BOLD, 20));
+        btnIniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnIniciar.addActionListener(evt -> abrirPainelInterativo());
         panel.add(btnIniciar);
         add(panel);
     }

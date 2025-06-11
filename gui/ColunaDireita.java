@@ -63,6 +63,8 @@ public class ColunaDireita extends JFrame {
             botaoCBTC.setContentAreaFilled(false);
             botaoCBTC.setBorderPainted(false);
             botaoCBTC.setOpaque(false);
+            botaoCBTC.setForeground(new Color(0,0,0,0));
+            botaoCBTC.setIcon(null);
             botaoCBTC.addActionListener(e -> {
                 dispose();
                 new ChaveCBTC().setVisible(true);
@@ -489,21 +491,28 @@ public class ColunaDireita extends JFrame {
     }
 
     private void mostrarImagensFlutuantes() {
-        // Criar frame para o cinturão
+        // Dimensões da tela principal
+        int telaLargura = 1024;
+        int telaAltura = 768;
+        int imgLargura = 150;
+        int imgAltura = 100;
+        int yInferior = telaAltura - imgAltura - 30 + 50; // 30px de margem inferior + 50 para baixo
+
+        // Centralizar o cinturão
         if (frameCinturao == null) {
             frameCinturao = new JFrame();
-            frameCinturao.setSize(150, 100);
-            frameCinturao.setLocation(350, 600);
+            frameCinturao.setSize(imgLargura, imgAltura);
+            frameCinturao.setLocation((telaLargura - imgLargura) / 2 - 100 + 130, yInferior); // -100 para separar, +130 para direita
             frameCinturao.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frameCinturao.setUndecorated(true);
             frameCinturao.setAlwaysOnTop(true);
 
             try {
                 ImageIcon icon = new ImageIcon("imagens/imagem do cinturao.jpeg");
-                Image image = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                Image image = icon.getImage().getScaledInstance(imgLargura, imgAltura, Image.SCALE_SMOOTH);
                 JLabel label = new JLabel(new ImageIcon(image));
-                
-                // Adicionar clique para fechar
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setVerticalAlignment(SwingConstants.CENTER);
                 label.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 label.addMouseListener(new java.awt.event.MouseAdapter() {
                     @Override
@@ -512,7 +521,6 @@ public class ColunaDireita extends JFrame {
                         frameCinturao = null;
                     }
                 });
-                
                 frameCinturao.add(label);
                 frameCinturao.setVisible(true);
             } catch (Exception e) {
@@ -520,21 +528,21 @@ public class ColunaDireita extends JFrame {
             }
         }
 
-        // Criar frame para o adesivo
+        // Centralizar o adesivo
         if (frameAdesivo == null) {
             frameAdesivo = new JFrame();
-            frameAdesivo.setSize(150, 100);
-            frameAdesivo.setLocation(520, 600);
+            frameAdesivo.setSize(imgLargura, imgAltura);
+            frameAdesivo.setLocation((telaLargura - imgLargura) / 2 + 100 + 130, yInferior); // +100 para separar, +130 para direita
             frameAdesivo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frameAdesivo.setUndecorated(true);
             frameAdesivo.setAlwaysOnTop(true);
 
             try {
                 ImageIcon icon = new ImageIcon("imagens/imagem do adesivo.jpeg");
-                Image image = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                Image image = icon.getImage().getScaledInstance(imgLargura, imgAltura, Image.SCALE_SMOOTH);
                 JLabel label = new JLabel(new ImageIcon(image));
-                
-                // Adicionar clique para fechar
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setVerticalAlignment(SwingConstants.CENTER);
                 label.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 label.addMouseListener(new java.awt.event.MouseAdapter() {
                     @Override
@@ -543,7 +551,6 @@ public class ColunaDireita extends JFrame {
                         frameAdesivo = null;
                     }
                 });
-                
                 frameAdesivo.add(label);
                 frameAdesivo.setVisible(true);
             } catch (Exception e) {
