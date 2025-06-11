@@ -1,7 +1,6 @@
 package main;
 
 import gui.PainelInterativo;
-
 import javax.swing.*;
 
 public class Main {

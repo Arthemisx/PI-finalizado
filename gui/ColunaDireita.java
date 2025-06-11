@@ -58,7 +58,7 @@ public class ColunaDireita extends JFrame {
             
 
             // Botão CBTC
-            botaoCBTC = new JButton(new ImageIcon("imagens/cbtc_rm.jpg"));
+            botaoCBTC = new JButton(new ImageIcon("imagens/cbtc_rm.png"));
             botaoCBTC.setBounds(430, 580, 70, 60);
             botaoCBTC.setContentAreaFilled(false);
             botaoCBTC.setBorderPainted(false);
@@ -110,9 +110,9 @@ public class ColunaDireita extends JFrame {
                     }
                 }
             } else if (index == 1) {
-                tocarSom("sons/som.wav");
+                tocarSom("sons/gongo.wav");
             } else if (clickCounts[index] >= 2) {
-                tocarSom("sons/som.wav");
+                tocarSom("sons/gongo.wav");
                 clickCounts[index] = 0;
             }
         });
@@ -467,7 +467,7 @@ public class ColunaDireita extends JFrame {
             setaEsquerda.setCursor(new Cursor(Cursor.HAND_CURSOR));
             setaEsquerda.addActionListener(e -> {
                 frameCabineTras.dispose();
-                abrirPortaCabine();
+                new PainelInterativo().setVisible(true);
             });
             panel.add(setaEsquerda);
 
@@ -502,6 +502,17 @@ public class ColunaDireita extends JFrame {
                 ImageIcon icon = new ImageIcon("imagens/imagem do cinturao.jpeg");
                 Image image = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
                 JLabel label = new JLabel(new ImageIcon(image));
+                
+                // Adicionar clique para fechar
+                label.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                label.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent e) {
+                        frameCinturao.dispose();
+                        frameCinturao = null;
+                    }
+                });
+                
                 frameCinturao.add(label);
                 frameCinturao.setVisible(true);
             } catch (Exception e) {
@@ -522,6 +533,17 @@ public class ColunaDireita extends JFrame {
                 ImageIcon icon = new ImageIcon("imagens/imagem do adesivo.jpeg");
                 Image image = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
                 JLabel label = new JLabel(new ImageIcon(image));
+                
+                // Adicionar clique para fechar
+                label.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                label.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent e) {
+                        frameAdesivo.dispose();
+                        frameAdesivo = null;
+                    }
+                });
+                
                 frameAdesivo.add(label);
                 frameAdesivo.setVisible(true);
             } catch (Exception e) {

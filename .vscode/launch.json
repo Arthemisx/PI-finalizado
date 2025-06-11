@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Metro Panel",
+            "request": "launch",
+            "mainClass": "com.metro.Main",
+            "projectName": "metro-panel",
+            "vmArgs": "-Dfile.encoding=UTF-8",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole"
+        }
+    ]
+} 

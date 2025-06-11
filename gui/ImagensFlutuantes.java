@@ -101,7 +101,10 @@ public class ImagensFlutuantes {
             adesivoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
-                    abrirNovaJanela("imagens/22 - Adesivo de porta isolada - 2 terços instalado.jpg");
+                    currentWindow.getContentPane().remove(adesivoLabel);
+                    adesivoLabel = null;
+                    currentWindow.getContentPane().revalidate();
+                    currentWindow.getContentPane().repaint();
                 }
             });
             currentWindow.getContentPane().add(adesivoLabel);
@@ -114,7 +117,10 @@ public class ImagensFlutuantes {
             cinturaoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
-                    abrirNovaJanela("imagens/imagem do cinturao.jpeg");
+                    currentWindow.getContentPane().remove(cinturaoLabel);
+                    cinturaoLabel = null;
+                    currentWindow.getContentPane().revalidate();
+                    currentWindow.getContentPane().repaint();
                 }
             });
             currentWindow.getContentPane().add(cinturaoLabel);
@@ -127,7 +133,10 @@ public class ImagensFlutuantes {
             telasLabel.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent e) {
-                    abrirNovaJanela("imagens/telas.jpg");
+                    currentWindow.getContentPane().remove(telasLabel);
+                    telasLabel = null;
+                    currentWindow.getContentPane().revalidate();
+                    currentWindow.getContentPane().repaint();
                 }
             });
             currentWindow.getContentPane().add(telasLabel);

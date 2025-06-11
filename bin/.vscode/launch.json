@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Executar Projeto Integrado",
+            "request": "launch",
+            "mainClass": "ProjetoIntegrado",
+            "projectName": "painel-interativo"
+        }
+    ]
+} 

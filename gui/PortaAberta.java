@@ -225,36 +225,8 @@ public class PortaAberta extends JFrame {
     }
 
     private void abrirPortaFechada() {
-        JFrame framePortaFechada = new JFrame("Porta Fechada");
-        framePortaFechada.setSize(LARGURA_JANELA, ALTURA_JANELA);
-        framePortaFechada.setLocationRelativeTo(null);
-        framePortaFechada.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        try {
-            ImageIcon backgroundIcon = new ImageIcon("imagens/20 - Porta fechada.jpg");
-            Image backgroundImage = backgroundIcon.getImage();
-            
-            BackgroundPanel panel = new BackgroundPanel(backgroundImage);
-            panel.setLayout(null);
-
-            // Botão de seta para a esquerda para voltar
-            JButton setaEsquerda = new JButton(new ImageIcon("imagens/seta esquerda.png"));
-            setaEsquerda.setBounds(50, 384, 100, 100);
-            setaEsquerda.setContentAreaFilled(false);
-            setaEsquerda.setBorderPainted(false);
-            setaEsquerda.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            setaEsquerda.addActionListener(e -> {
-                framePortaFechada.dispose();
-                new PortaAberta().setVisible(true);
-            });
-            panel.add(setaEsquerda);
-
-            framePortaFechada.setContentPane(panel);
-            framePortaFechada.setVisible(true);
-            dispose(); // Fecha a janela atual
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar imagem: " + e.getMessage());
-        }
+        dispose(); // Fecha a janela atual
+        new PortaFechada().setVisible(true);
     }
 
     public static void main(String[] args) {

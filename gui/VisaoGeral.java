@@ -47,11 +47,7 @@ public class VisaoGeral extends JFrame {
             setaEsquerda.setCursor(new Cursor(Cursor.HAND_CURSOR));
             setaEsquerda.addActionListener(e -> {
                 dispose();
-                if (origem.equals("direita")) {
-                    new ColunaDireita().setVisible(true);
-                } else {
-                    new PortaCabineEsquerda().setVisible(true);
-                }
+                new PainelInterativo().setVisible(true);
             });
             panel.add(setaEsquerda);
 
@@ -91,7 +87,17 @@ public class VisaoGeral extends JFrame {
 
             setContentPane(panel);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar imagem: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao carregar imagens: " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new TelaImagensFlutuantes().setVisible(true);
+        });
     }
 } 

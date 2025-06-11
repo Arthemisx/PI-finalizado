@@ -12,6 +12,11 @@ public class BackgroundPanel extends JPanel {
         setBackground(Color.WHITE);
     }
 
+    public void setImagem(Image novaImagem) {
+        this.backgroundImage = novaImagem;
+        repaint(); // Força o repaint do painel
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

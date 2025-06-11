@@ -2,6 +2,7 @@ package gui.componentes;
 
 import gui.BackgroundPanel;
 import gui.UIUtils;
+import gui.ChaveCBTC;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -76,7 +77,7 @@ public class ColunaDireita extends JFrame {
         CBTCButton.setFocusPainted(false);
         CBTCButton.addActionListener(e -> {
             dispose();
-            new ChaveCBTC().setVisible(true);
+            new ChaveCBTC();
         });
         mainPanel.add(CBTCButton);
 
@@ -156,9 +157,9 @@ public class ColunaDireita extends JFrame {
                     }
                 }
             } else if (index == 1) {
-                tocarSom("sons/som.wav");
+                tocarSom("sons/gongo.wav");
             } else if (clickCounts[index] >= 2) {
-                tocarSom("sons/som.wav");
+                tocarSom("sons/gongo.wav");
                 clickCounts[index] = 0;
             }
         });

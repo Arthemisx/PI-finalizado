@@ -21,7 +21,7 @@ public class PortaCabineLateralEsquerda extends JFrame {
     private void initComponents() {
         try {
             // Carregar imagem de fundo
-            ImageIcon backgroundIcon = new ImageIcon("imagens/porta de cabine lateral esquerda.jpg");
+            ImageIcon backgroundIcon = new ImageIcon("imagens/12 - Porta de cabine lateral esquerda.jpg");
             Image backgroundImage = backgroundIcon.getImage();
             panel = new BackgroundPanel(backgroundImage);
             panel.setLayout(null);
@@ -38,6 +38,18 @@ public class PortaCabineLateralEsquerda extends JFrame {
                 new VisaoGeral().setVisible(true);
             });
             panel.add(portaBtn);
+
+            // Botão de seta para a direita para voltar ao Painel Interativo
+            JButton setaDireita = new JButton(new ImageIcon("imagens/seta direita.png"));
+            setaDireita.setBounds(900, 384, 100, 100);
+            setaDireita.setContentAreaFilled(false);
+            setaDireita.setBorderPainted(false);
+            setaDireita.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            setaDireita.addActionListener(e -> {
+                dispose();
+                new PainelInterativo().setVisible(true);
+            });
+            panel.add(setaDireita);
 
             setContentPane(panel);
         } catch (Exception e) {

@@ -1,60 +1,26 @@
 package gui.componentes;
 
-import gui.BackgroundPanel;
-import gui.UIUtils;
-import util.WindowUtils;
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+import util.UIUtils;
 
-public class DIC extends JFrame {
+public class DIC extends JPanel {
+    private Image backgroundImage;
 
     public DIC() {
-        WindowUtils.configurarJanelaBasica(this, "DIC", 1200, 800);
-        initComponents();
+        setLayout(null);
+        Image backgroundImage = UIUtils.loadImage("imagens/10 - DIC sem chave20.jpg");
+        if (backgroundImage != null) {
+            this.backgroundImage = backgroundImage;
+            setPreferredSize(new Dimension(backgroundImage.getWidth(null), backgroundImage.getHeight(null)));
+        }
     }
 
-    private void initComponents() {
-        Image backgroundImage = UIUtils.loadImage("imagens/10 - DIC sem chave20.jpg");
-        if (backgroundImage == null) {
-            JOptionPane.showMessageDialog(this, 
-                "Erro ao carregar imagem de fundo", 
-                "Erro", 
-                JOptionPane.ERROR_MESSAGE);
-            dispose();
-            return;
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (backgroundImage != null) {
+            g.drawImage(backgroundImage, 0, 0, this);
         }
-
-        BackgroundPanel mainPanel = new BackgroundPanel(backgroundImage);
-        mainPanel.setLayout(null);
-
-        // Botão de seta para retornar
-        ImageIcon setaIcon = new ImageIcon("imagens/adesivo_seta_amarela2.png");
-        if (setaIcon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-            JButton setaRetorno = WindowUtils.criarBotaoSeta(
-                "imagens/adesivo_seta_amarela2.png",
-                new Rectangle(20, 300, 80, 60),
-                evt -> {
-                    dispose();
-                    new ChaveCBTC().setVisible(true);
-                }
-            );
-            mainPanel.add(setaRetorno);
-        }
-
-        // Botão de seta para avançar
-        ImageIcon setaIcon2 = new ImageIcon("imagens/adesivo_seta_amarela2.png");
-        if (setaIcon2.getImageLoadStatus() == MediaTracker.COMPLETE) {
-            JButton setaAvancar = WindowUtils.criarBotaoSeta(
-                "imagens/adesivo_seta_amarela2.png",
-                new Rectangle(1100, 300, 80, 60),
-                evt -> {
-                    dispose();
-                    new ColunaDireita().setVisible(true);
-                }
-            );
-            mainPanel.add(setaAvancar);
-        }
-
-        setContentPane(mainPanel);
     }
 } 

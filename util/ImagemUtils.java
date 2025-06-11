@@ -31,20 +31,24 @@ public class ImagemUtils {
     }
 
     public static void atualizarImagem(JLabel label, String caminho, Component parent) {
+        atualizarImagemComTamanho(label, caminho, parent, LARGURA_PADRAO, ALTURA_PADRAO);
+    }
+
+    public static void atualizarImagemComTamanho(JLabel label, String caminho, Component parent, int larguraDesejada, int alturaDesejada) {
         try {
             Image originalImage = carregarImagem(caminho, parent);
             if (originalImage == null) return;
 
             double originalRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
-            double windowRatio = (double) LARGURA_PADRAO / ALTURA_PADRAO;
+            double windowRatio = (double) larguraDesejada / alturaDesejada;
             
             int scaledWidth, scaledHeight;
             if (originalRatio > windowRatio) {
-                scaledWidth = LARGURA_PADRAO;
-                scaledHeight = (int) (LARGURA_PADRAO / originalRatio);
+                scaledWidth = larguraDesejada;
+                scaledHeight = (int) (larguraDesejada / originalRatio);
             } else {
-                scaledHeight = ALTURA_PADRAO;
-                scaledWidth = (int) (ALTURA_PADRAO * originalRatio);
+                scaledHeight = alturaDesejada;
+                scaledWidth = (int) (alturaDesejada * originalRatio);
             }
 
             Image scaledImage = originalImage.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);

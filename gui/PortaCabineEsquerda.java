@@ -56,7 +56,11 @@ public class PortaCabineEsquerda extends JFrame {
 
             setContentPane(panel);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar imagem: " + e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao carregar imagem: " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
         }
     }
 

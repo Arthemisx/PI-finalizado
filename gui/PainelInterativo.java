@@ -26,7 +26,7 @@ public class PainelInterativo extends JFrame {
         mapaImagens.put("DDU Uma Porta Nao Fecha", "imagens/DDU uma porta não fecha.jpg");
         mapaImagens.put("Tela Central", "imagens/tela_central.png");
         mapaImagens.put("Tela Auxiliar 1", "imagens/05 - Módulo de Comunicação - tela de início.jpg");
-        mapaImagens.put("Tela Auxiliar 2", "imagens/botoes do painel editados.png");
+        mapaImagens.put("Tela Auxiliar 2", "imagens/botoes do painel editados.jpg");
         mapaImagens.put("Tela Câmeras", "imagens/tela_cameras.jpg");
         mapaImagens.put("Alavanca", "imagens/alavanca_controle.jpg");
         mapaImagens.put("Seta Amarela", "imagens/adesivo_seta_amarela.png");
@@ -177,80 +177,58 @@ public class PainelInterativo extends JFrame {
     private void abrirTelaEspecifica(String nomeTela, JButton botao) {
         try {
             if (nomeTela.equals("Alavanca")) {
-                TelaController.abrirTela(nomeTela, this);
+                new TelaAlavanca().setVisible(true);
                 return;
             }
             
             if (nomeTela.equals("Tela Auxiliar 1")) {
-                JFrame frame = new JFrame(nomeTela);
-                frame.setSize(1024, 768);
-                frame.setLocationRelativeTo(null);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.setLayout(new BorderLayout());
-
-                try {
-                    ImageIcon backgroundIcon = new ImageIcon("imagens/05 - Módulo de Comunicação - tela de início.jpg");
-                    Image backgroundImage = backgroundIcon.getImage();
-                    
-                    BackgroundPanel panel = new BackgroundPanel(backgroundImage);
-                    panel.setLayout(null);
-
-                    // Botão invisível para frame_60
-                    JButton botaoFrame60 = new JButton();
-                    botaoFrame60.setBounds(765, 412, 100, 70);
-                    botaoFrame60.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    botaoFrame60.addActionListener(e -> {
-                        frame.dispose();
-                        TelaController.abrirFrame60(this);
-                    });
-                    panel.add(botaoFrame60);
-
-                    // Botão invisível para frame_10
-                    JButton botaoFrame10 = new JButton();
-                    botaoFrame10.setBounds(765, 300, 100, 70);
-                    botaoFrame10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    botaoFrame10.addActionListener(e -> {
-                        frame.dispose();
-                        TelaController.abrirFrame10(this);
-                    });
-                    panel.add(botaoFrame10);
-
-                    // Adiciona a seta amarela clicável no lado direito
-                    JButton setaAmarela = new JButton(new ImageIcon("imagens/seta direita.png"));
-                    setaAmarela.setBounds(900, 384, 100, 100);
-                    setaAmarela.setContentAreaFilled(false);
-                    setaAmarela.setBorderPainted(false);
-                    setaAmarela.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    setaAmarela.addActionListener(e -> {
-                        frame.dispose();
-                        TelaController.abrirPortaCabine(this);
-                    });
-                    panel.add(setaAmarela);
-
-                    frame.setContentPane(panel);
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Erro ao carregar imagem: " + e.getMessage());
-                }
+                TelaController.abrirTelaAuxiliar1(this);
                 return;
             }
             
             if (nomeTela.startsWith("DDU")) {
                 new DDU().setVisible(true);
                 return;
-            } else {
-                String caminhoImagem = mapaImagens.get(nomeTela);
-                if (caminhoImagem != null) {
-                    JFrame frame = new JFrame(nomeTela);
-                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.add(new JLabel(new ImageIcon(caminhoImagem)));
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                }
             }
+            
+            String caminhoImagem = mapaImagens.get(nomeTela);
+            if (caminhoImagem == null) {
+                JOptionPane.showMessageDialog(this, 
+                    "Imagem não encontrada para a tela: " + nomeTela,
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            File arquivo = new File(caminhoImagem);
+            if (!arquivo.exists()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Arquivo de imagem não encontrado: " + caminhoImagem,
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ImageIcon imagem = new ImageIcon(caminhoImagem);
+            if (imagem.getImageLoadStatus() != MediaTracker.COMPLETE) {
+                JOptionPane.showMessageDialog(this, 
+                    "Erro ao carregar a imagem: " + caminhoImagem,
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            JFrame frame = new JFrame(nomeTela);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.add(new JLabel(imagem));
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao abrir tela: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao abrir tela: " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -1,0 +1,14 @@
+{
+    "java.project.sourcePaths": [
+        ".",
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.completion.enabled": true,
+    "java.format.enabled": true
+} 
