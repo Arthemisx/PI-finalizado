@@ -12,7 +12,9 @@ O website foi desenvolvido pelo grupo de Projeto Integrador Interdiciplinar mest
 O projeto pode ser acessado por qualquer um que clonar todo o repositorio em seu dispositivo e tiver o vs code e MySQL ou variaveis instalados em seu dispositivo.
 
 # 🛠️ Abrir e rodar o projeto
+
 Para executar o projeto os passos principais são:
+
 1.clone o repositorio para uma pasta local
 
 2.abra esse folder em seu vs code
