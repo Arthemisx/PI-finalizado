@@ -5,7 +5,7 @@ O projeto foi desenvolvido com o objetivo de gameficar as falhas de porta do met
 
 A funcionalidade do jogo se adequa ao maquinista, onde ao logar com sua conta ele pode jogar e verificar seus pontos adquiridos ao longo do jogo. Desse modo, ele pode escolher jogar novamente ou pegar uma valha de porta específica para treinar. Além disso, o administrador podera ver a pontuação de todos os maquinistas pelo banco de dados, adicionar ou remover jogadores e adicionar ou remover funcionalidades do jogo.
 As tecnologias usadas foram a linguagem de programação Java e o banco de dados relacional. Além disso, todos os protótipos de tela e de navegação foram fornecidos pelo perceiro, fazendo com que o grupo pudesse apenas tornar jogavel toda essa dinêmica de imagens.
-O website foi desenvolvido pelo grupo de Projeto Integrador Interdiciplinar mestrado pelo professor Alexander, com seus respectivos membros: Arthemis Nobre, Adele di Girolamo, Carmen Salido, e Renan. Além disso, os contribuidores para o projeto foram: Fábio, representante do Metrô que nos disponibilizou todas as imagens e protótipos necessarios e Rudolf, coordenador de curso que nos auxiliou na coleta dos requisitos do projeto e na ponte entre o cliente e o grupo.
+O website foi desenvolvido pelo grupo de Projeto Integrador Interdiciplinar mestrado pelo professor Alexander, com seus respectivos membros: Arthemis Nobre, Adele di Girolamo, Carmen Salido, e Ryan. Além disso, os contribuidores para o projeto foram: Fábio, representante do Metrô que nos disponibilizou todas as imagens e protótipos necessarios e Rudolf, coordenador de curso que nos auxiliou na coleta dos requisitos do projeto e na ponte entre o cliente e o grupo.
 
 # 📁 Acesso ao projeto
 
